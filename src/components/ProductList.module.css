@@ -1,0 +1,122 @@
+.listContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.listItem:hover {
+    transform: scale(1.02);
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.productName {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+.productSize,
+.productQuantity {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.button.edit {
+    background-color: #3498db;
+    color: white;
+}
+
+.button.edit:hover {
+    background-color: #2980b9;
+}
+
+.button.delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.button.delete:hover {
+    background-color: #c0392b;
+}
+
+.button.save {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.button.save:hover {
+    background-color: #27ae60;
+}
+
+.button.cancel {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.button.cancel:hover {
+    background-color: #7f8c8d;
+}
+
+.label {
+    display: block;
+    font-size: 0.9em;
+    color: #333;
+    margin-top: 8px;
+}
+
+.input {
+    padding: 6px;
+    font-size: 0.9em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.editing {
+    background-color: #ecf0f1;
+}
+
