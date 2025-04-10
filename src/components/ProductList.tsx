@@ -52,7 +52,7 @@ const ProductList: React.FC = () => {
             formData.append("image", newProduct.image);
         }
 
-        axios.post("http://localhost:5000/estoque", formData,{
+        axios.post("http://localhost:5000/estoque", formData, {
             headers: { "Content-Type": "multipart/form-data" },
         })
             .then(response => {
@@ -76,11 +76,28 @@ const ProductList: React.FC = () => {
     const handleSaveEdit = (id: string) => {
         if (!editValue) return;
 
-        axios.put(`http://localhost:5000/estoque/${id}`, editValue)
+        const formData = new FormData();
+        formData.append("produto", editValue.produto);
+        formData.append("tamanho", editValue.tamanho.toString());
+        formData.append("quantidade", editValue.quantidade.toString());
+
+        if (editValue.image instanceof File) {
+            formData.append("image", editValue.image);
+        }
+
+        axios.put(`http://localhost:5000/estoque/${id}`, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+        })
             .then(() => {
                 setProducts(products.map(p => p._id === id ? editValue : p));
                 setEditingId(null);
-                setEditValue(null);
+                setEditValue({
+                    _id: "",
+                    produto: "",
+                    tamanho: 0,
+                    quantidade: 0,
+                    image: null
+                });
             })
             .catch(() => alert("Erro ao editar produto"));
     };
@@ -191,7 +208,11 @@ const ProductList: React.FC = () => {
                                 <Input
                                     type="file"
                                     value={undefined}
-                                    onChange={e => setEditValue({ ...editValue!, image: String(e.target.files) })}
+                                    onChange={e => {
+                                        if (e.target.files && e.target.files[0]) {
+                                            setEditValue({ ...editValue!, image: e.target.files[0] })
+                                        }
+                                    }}
                                     placeholder="Imagem"
                                     label="Imagem"
                                     className={styles.input}
